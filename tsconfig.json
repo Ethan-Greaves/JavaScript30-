@@ -1,0 +1,42 @@
+{
+	// Visit https://aka.ms/tsconfig to read more about this file
+	"compilerOptions": {
+		/* File Layout */
+		"rootDir": "./src" /* Points to your source TypeScript directory */,
+		"outDir": "./dist" /* Points to your output JavaScript directory */,
+
+		/* Environment Settings */
+		"module": "ESNext" /* Changed from nodenext to keep clean browser module syntax */,
+		"target": "ES2022" /* Changed from esnext to safely target modern browsers */,
+		"lib": [
+			"DOM",
+			"DOM.Iterable",
+			"ES2022"
+		] /* ESSENTIAL: Recognizes browser globals like window, document, and audio */,
+		"types": [],
+
+		/* Other Outputs */
+		"sourceMap": true,
+		"declaration": false /* Changed to false: You are building an app, not publishing a library */,
+		"declarationMap": false /* Changed to false: Only needed if declaration is true */,
+
+		/* Stricter Typechecking Options */
+		"noUncheckedIndexedAccess": false /* Recommended false for JS30: Overcomplicates reading simple DOM list selections */,
+		"exactOptionalPropertyTypes": true,
+
+		/* Style Options */
+		// "noImplicitReturns": true,
+		// "noImplicitOverride": true,
+		// "noUnusedLocals": true,
+		// "noUnusedParameters": true,
+		// "noFallthroughCasesInSwitch": true,
+		// "noPropertyAccessFromIndexSignature": true,
+
+		/* Recommended Options */
+		"strict": true,
+		"esModuleInterop": true /* Added: Smooths out standard module handling */,
+		"noEmitOnError": false /* Added: Lets code run in the browser even if you have a strict linting warning */,
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true
+	}
+}
