@@ -1,18 +1,30 @@
 const keys = document.querySelectorAll<HTMLDivElement>('.keys div');
-const audioFiles = document.querySelectorAll<HTMLAudioElement>('audio');
+
+function playSound(keyCode: string | undefined) {
+	if (!keyCode) return;
+
+	const key = document.querySelector<HTMLDivElement>(
+		`.key[data-key="${keyCode}"]`,
+	);
+	const audio = document.querySelector<HTMLAudioElement>(
+		`audio[data-key="${keyCode}"]`,
+	);
+
+	if (!key || !audio) return;
+
+	key.classList.add('playing');
+	audio.currentTime = 0;
+	audio.play();
+
+	setTimeout(() => {
+		key.classList.remove('playing');
+	}, 150);
+}
 
 keys.forEach((key) => {
-	key.addEventListener('click', (e) => {
-		audioFiles.forEach((file) => {
-			if (file.dataset.key === key.dataset.key) {
-				key.classList.add('playing');
-				file.currentTime = 0;
-				file.play();
+	key.addEventListener('click', () => playSound(key.dataset.key));
+});
 
-				setTimeout(() => {
-					key.classList.remove('playing');
-				}, 150);
-			}
-		});
-	});
+window.addEventListener('keydown', (event) => {
+	playSound(String(event.keyCode));
 });
